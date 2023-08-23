@@ -1,0 +1,11 @@
+name: flagit
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - scipy
+  - pandas
+  - pip
+  - pip:
+    - pytest-cov
+    - pytest
