@@ -117,7 +117,7 @@ class SoilFlaggerIterative:
     
     def run_flagit_by_sensor(self, sensor_data):
         sensor_data = sensor_data.reset_index()#indices are for all sensor data, flagged or unflagged
-        sensor_data['index_column'] = sensor_data.index # do i need this??
+        sensor_data['index_column'] = sensor_data.index 
         self.run_flagit(sensor_data)
     
     def run_flagit(self, sensor_data):
@@ -130,7 +130,7 @@ class SoilFlaggerIterative:
                 pass_window_all = pass_window_all + pass_range
                 pass_window_all = [*set(pass_window_all)]
                 change_window_all = change_window_all + change_range
-                change_window_all = [*set(change_window_all)] # converting to a set removes all duplicates
+                change_window_all = [*set(change_window_all)]
         if len(pass_window_all)>0:
             flagit_interface = flagit.Interface(sensor_data[sensor_data['index_column'].isin(pass_window_all)], frequency=0.25)
             flagit_results = flagit_interface.run()
@@ -218,3 +218,4 @@ class SoilFlaggerIterative:
         print("Percent flagit unflagged that was manually unflagged: " + str(100*(num_both_unflagged/num_flagit_unflagged)) + "%")
         print("Percent manually flagged that was flagit flagged: " + str(100*(num_both_flagged/num_manually_flagged)) + "%")
         print("Percent manually unflagged that was flagit unflagged: " + str(100*(num_both_unflagged/num_manually_unflagged)) + "%")
+
